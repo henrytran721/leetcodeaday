@@ -20,3 +20,14 @@ var maxSubArray = function(nums) {
 
 // Time O(n)
 // Space O(1)
+
+// compares the currMax + current number vs. the number 
+// stores the greatest sum in another variable 
+// [-2,1,-3,4,-1,2,1,-5,4]
+// -2 : -2  currMax: -2, max: -2
+// -2 :  1  currMax: 1, max: 1
+// -3 + 1 : -3 currMax: -2, max: 1
+// 4 + -2 : 4 currMax: 4, max: 4
+// 3 : -1 currMax: 3, max: 4
+// 3 + 2 : 2 currMax: 5, max: 5
+// 5 + 1 : 1 currMax: 6, max: 6 
