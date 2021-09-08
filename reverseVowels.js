@@ -29,3 +29,39 @@ var reverseVowels = function(s) {
 // hello
 // [e,o]
 // holle
+
+// Time: O(n)
+// Space: O(n)
+
+
+var reverseVowels = function(s) {
+    if(s.length === 1) return s;
+    let vowels = 'aeiouAEIOU';
+    s = s.split('');
+    
+    let start = 0;
+    let end = s.length - 1;
+    
+    while(start < end) {
+        if(!(vowels.includes(s[start]))) {
+            start++;
+        }
+        
+        if(!(vowels.includes(s[end]))) {
+            end--;
+        }
+        
+        if(vowels.includes(s[start]) && vowels.includes(s[end])) {
+            let temp = s[start];
+            s[start] = s[end];
+            s[end] = temp;
+            start++;
+            end--;
+        }
+    }
+    
+    return s.join('');
+};
+
+// Time: O(n)
+// Space: O(1)
