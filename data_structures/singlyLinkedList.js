@@ -1,20 +1,24 @@
-// node 
-// properties
-// - next, value
+// class Node 
+// should have a val property
+// should have a next property
 
 
-// singly linked list
-// properties
-// head, tail, length
+// sll 
+// head -> head.next -> head.next.next -> tail -> null
+// head -> node -> -> node -> tail
+// head
+// tail
+// length
+
 
 class Node {
     constructor(val) {
-        this.val = val;
-        this.next = null;
+       this.val = val;
+       this.next = null; 
     }
 }
 
-class SinglyLinkedList {
+class SLL {
     constructor() {
         this.head = null;
         this.tail = null;
@@ -22,10 +26,10 @@ class SinglyLinkedList {
     }
 
     push(val) {
-        let newNode= new Node(val);
+        let newNode = new Node(val);
         if(!this.head) {
             this.head = newNode;
-            this.tail = this.head;
+            this.tail = newNode;
         } else {
             this.tail.next = newNode;
             this.tail = newNode;
@@ -35,47 +39,49 @@ class SinglyLinkedList {
         return this;
     }
 
+    // returns popped node
     pop() {
-        if(!this.head) {
-            return null;
-        } else if(this.length === 1) {
-            let lastNode = this.tail;
-            this.tail = null;
+        // have two variables traversing the list
+        // if current.next == null, remove this node and set other variable to node before this node
+        // head -> head.next -> head.next.next -> tail -> null
+
+        let current = this.head;
+        let newTail = this.head;
+        if(this.length === 0) {
             this.head = null;
-            return lastNode;
+            this.tail = null;
         } else {
-            let current = this.head;
-            let newTail = current;
             while(current.next !== null) {
                 newTail = current;
                 current = current.next;
             }
-            this.tail = newTail;
-            this.tail.next = null;
-            this.length--;
-
-            return current;
+        newTail.next = null;
+        this.tail = newTail;
+        this.length--;
         }
+        return current;
     }
 
-    // remove from beginning
     shift() {
-        if(!this.head) return undefined;
-        let oldHead = this.head;
-        this.head = this.head.next;
-        this.length--;
-        if(!this.length) {
+        // remove from beginning and reset head to next node
+        if(this.length === 0) {
             this.head = null;
             this.tail = null;
+        } else {
+            let oldHead = this.head;
+            this.head = oldHead.next;
+            oldHead.next = null;
+            this.length--;
+            return oldHead;
         }
-        return oldHead;
     }
 
+    // add node to the beginning
     unshift(val) {
         let newNode = new Node(val);
         if(!this.head) {
-            this.head = newNode;
-            this.tail = newNode;
+            this.head = null;
+            this.tail = null;
         } else {
             newNode.next = this.head;
             this.head = newNode;
@@ -85,68 +91,100 @@ class SinglyLinkedList {
     }
 
     get(i) {
-        let counter = 0;
+        if(i < 0 || i > this.length) return undefined;
+
         let current = this.head;
-        // edge case
-        if(i < 0 || i > this.length) return null;
-        while(i !== counter) {
+        let counter = 0;
+        while(counter !== i) {
             counter++;
             current = current.next;
         }
-        
+
         return current;
     }
 
     set(i, val) {
-        var foundNode = this.get(i);
+        let foundNode = this.get(i);
         if(foundNode) {
             foundNode.val = val;
+            return true;
         } else {
-            return null;
+            return false;
         }
     }
 
     insert(i, val) {
-        if(i < 0 || i > this.length) return false;
+        if(i < 0 || i > this.length) {
+            return undefined;
+        }
+        
         let newNode = new Node(val);
-
         if(i === 0) {
             return this.unshift(val);
         } else if(i === this.length) {
             return this.push(val);
         } else {
-            var prevNode = this.get(i - 1);
-            var nextNode = prevNode.next;
+            let prevNode = this.get(i - 1);
+            newNode.next = prevNode.next;
             prevNode.next = newNode;
-            newNode.next = nextNode;
             this.length++;
-            return true;
+            return this;
         }
     }
 
     remove(i) {
-        if(i < 0 || i > this.length - 1) return undefined;
+        if(i < 0 || i > this.length - 1) {
+            return undefined;
+        }
 
         if(i === 0) {
             return this.shift();
         } else if(i === this.length - 1) {
             return this.pop();
         } else {
-            var prevNode = this.get(i - 1);
-            var removedNode = prevNode.next;
-            var nextNode = removedNode.next;
-
-            prevNode.next = nextNode;
-            removedNode.next = null;
+            let prevNode = this.get(i - 1);
+            let removedNode = prevNode.next;
+            prevNode.next = removedNode.next;
             this.length--;
             return removedNode;
         }
     }
+
+    print() {
+        let arr = [];
+        let current = this.head;
+
+        while(current !== null) {
+            arr.push(current.val);
+            current = current.next;
+        }
+        return arr;
+    }
+
+    reverse() {
+        let current = this.head;
+        let next;
+        let prev = null;
+        
+        // swap head and tail
+        this.head = this.tail;
+        this.tail = current;
+
+
+        for(let i = 0; i < this.length; i++) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        return this;
+    }
 }
 
-let sll = new SinglyLinkedList();
+let sll = new SLL();
 sll.push(0);
 sll.push(1);
 sll.push(2);
 sll.push(3);
-console.log(sll.remove(2));
+console.log(sll.get(1));
