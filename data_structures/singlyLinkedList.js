@@ -10,6 +10,22 @@
 // tail
 // length
 
+// push O(1)
+// pop O(n)
+// shift O(1)
+// unshift O(1)
+// get O(n)
+// set O(n)
+// insert O(n)
+// remove O(n)
+// reverse O(n)
+
+// Advantages of Linked List over Arrays
+// Insertion at the beginning of the list is optimized over an array
+// easily add or remove without reallocation or reorganization of te entire structure
+
+// Disadvantages 
+// Random access requires O(n) time to traverse the list
 
 class Node {
     constructor(val) {
@@ -188,3 +204,4 @@ sll.push(1);
 sll.push(2);
 sll.push(3);
 console.log(sll.get(1));
+

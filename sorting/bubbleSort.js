@@ -1,25 +1,31 @@
 function bubbleSort(arr) {
-    // sort arr in ascending order
-    // takes element at position and compares to the remaining elements
-    // creates sorted section towards the end of the array
-
     for(let i = arr.length; i >= 0; i--) {
+        let swap = false;
         for(let j = 0; j < i - 1; j++) {
             if(arr[j] > arr[j + 1]) {
+                swap = true;
                 let temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
-                console.log(arr);
             }
         }
+        if(!swap) break;
     }
 
     return arr;
 }
 
+console.log(bubbleSort([64, 9, 12, 1, 25] ));
+
+// [64, 9, 12, 1, 25]  
+// start at the end
+// loop to i - 1 (first iteration: 64, 9, 12, 1, 25) -> (64, 9, 12, 1) -> 64 -> 9 -> 12 
+// creates sorted upper bound
 
 
-console.log(bubbleSort([64,5,75,1,12]));
+// Optimization 
+// detect whether swap occurs / if arr is already sorted with boolean
+// if no swap, arr is sorted and we return the arr
 
-// Time O(n^2) using two for loops to get to solution
+// Time O(n^2)
 // Space O(1)
