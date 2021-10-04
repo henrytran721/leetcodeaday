@@ -36,3 +36,5 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
 }
 
 console.log(quickSort([4, 42, 10, 1, 3, 5, 30]));
+
+// Time: O(n log n)
