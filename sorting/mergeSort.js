@@ -27,12 +27,11 @@
 // our arrays have to be in sorted order
 
 function merge(arr1, arr2) {
-    let result = [];
     let i = 0;
     let j = 0;
+    let result = [];
 
     while(i < arr1.length && j < arr2.length) {
-        // do our comparison
         if(arr1[i] < arr2[j]) {
             result.push(arr1[i]);
             i++;
@@ -55,15 +54,13 @@ function merge(arr1, arr2) {
     return result;
 }
 
-
+// use recursion to sort the array
+// break down left most and then right and then build arr back up
 function mergeSort(arr) {
-    if(arr.length <= 1) return arr;
+    if(arr.length === 1) return arr;
     let mid = Math.floor(arr.length / 2);
-    // sorts the left
     let left = mergeSort(arr.slice(0, mid));
-    // sorts from mid to the end (right)
     let right = mergeSort(arr.slice(mid));
-
     return merge(left, right);
 }
 
