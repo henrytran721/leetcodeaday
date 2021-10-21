@@ -41,3 +41,13 @@ function findLast(nums, target) {
     if(nums[end] === target) index = end;
     return index;
 }
+
+//  0 1 2 3 4 5
+// [5,7,7,8,8,10]
+//  s   m      e
+//      s   m  e
+//          s  e
+//          s  m/e          
+//         s/e m
+// end = 4
+// traverses until mid is greater than start and end and leaves end in the position of last element
