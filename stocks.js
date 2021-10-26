@@ -47,3 +47,23 @@ var maxProfit = function(prices) {
 
 // Time: O(n)
 // Space: O(1)
+
+
+// use math.max instead of if statement
+var maxProfit = function(prices) {
+    if(prices.length === 1) return 0;
+    
+    let min = Infinity;
+    let max = 0;
+    
+    for(let i = 0; i < prices.length; i++) {
+        // find minimum value seen so far
+        if(prices[i] < min) {
+            min = prices[i];
+        }
+        // find max profit of values ahead of min value
+        max = Math.max(max, prices[i] - min);
+    }
+    
+    return max;
+};

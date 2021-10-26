@@ -122,3 +122,9 @@ bst.insert(6);
 bst.insert(3);
 bst.insert(11);
 console.log(bst.dfsPostOrder());
+
+
+// insert: Time - O(log n) Space: O(n)
+// search: Time: O(log n) Space: O(1)
+// bfs: Time: O(n) Space: O(n)
+// dfs: Time: O(n) Space: O(n)
