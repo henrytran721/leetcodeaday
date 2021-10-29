@@ -23,5 +23,6 @@ var binaryTreePaths = function(root) {
     return result;
 };
 
+// hello world
 // Time: O(n)
 // Space: O(n)
