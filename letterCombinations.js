@@ -46,5 +46,5 @@ var letterCombinations = function(digits) {
     return result;
 };
 
-// Time: O(n2)
+// Time: O(n)
 // Space: O(n) callstack use
