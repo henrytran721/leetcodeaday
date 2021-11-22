@@ -9,30 +9,34 @@
 // Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. 
 // In this case, the max area of water (blue section) the container can contain is 49.
 
-
+/**
+ * Minimum height of both sides will give us the height 
+ * end value - start value will give us width
+ * height * width = area
+ * store maximum area value we've seen
+ * move height pointers based on which value is greater
+ */
 var maxArea = function(height) {
-    let left = 0;
-    let right = height.length - 1;
-    let maxArea = 0;
+    let start = 0;
+    let end = height.length - 1; 
+    let area = 0;
     
-    while(left < right) {
-        // calculate width based on index
-        let w = right - left;
-        // calculate height based on the minimum of either side, can't overlap
-        let h = Math.min(height[left], height[right]);
-
-        let area = w * h;
-        maxArea = Math.max(maxArea, area);
-        // move based on what will yield a greater area
-        if(height[left] < height[right]) {
-            left++;
+    while(start < end) {
+        let h = Math.min(height[start], height[end]);
+        let w = end - start;
+        area = Math.max(h * w, area);
+        
+        if(height[end] > height[start]) {
+            start++;
         } else {
-            right--;
+            end--;
         }
     }
-    
-    return maxArea;
+    return area;
 };
+
+// Time: O(n)
+// Space: O(1)
 
 
 // Time: O(n), traverse based on how long our array is
