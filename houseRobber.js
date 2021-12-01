@@ -14,6 +14,7 @@
 // using a helper array, makes things more straight forward without in-place replacing 
 var rob = function(nums) {
     if(nums.length === 1) return nums[0];
+    
     let visited = [];
     visited[0] = nums[0];
     visited[1] = Math.max(nums[0], nums[1]);
@@ -24,6 +25,9 @@ var rob = function(nums) {
     
     return visited[visited.length - 1];
 };
+
+// Time: O(n) because we have to traverse through the entire array
+// Space: O(n) we have to store n number of values and do comparisons
 
 // replace in place
 var rob = function(nums) {
