@@ -31,3 +31,4 @@ var isPalindrome = function(x) {
 
 // Time O(log10N) because we are dividing by base 10 based on the number of digits there are
 // Space O(1)
+// Felicia was here
