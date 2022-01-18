@@ -34,6 +34,7 @@ def score(dice)
   result = 0
   frequency_counter = {}
 
+  # add to frequency counter
   dice.each { |num| 
     if frequency_counter[num] == nil
         frequency_counter[num] = 1
@@ -42,6 +43,8 @@ def score(dice)
     end
   }
 
+  # use first set of rules, if three 1s then add 1000 to result
+  # if count of any number is greater or equal to 3 then multiply number by 100 and add to result
   frequency_counter.each { | key, count | 
     if key == 1 && count >= 3
       result += 1000
@@ -52,6 +55,7 @@ def score(dice)
     end
   }
 
+  # whatever is remaining we only count 1 and 5s multiplied by their count
   frequency_counter.each { |key, count| 
     if key == 1
       result += (count * 100)
