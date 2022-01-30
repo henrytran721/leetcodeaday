@@ -32,3 +32,13 @@ var isPalindrome = function(x) {
 // Time O(log10N) because we are dividing by base 10 based on the number of digits there are
 // Space O(1)
 // Felicia was here
+
+/*** Ruby */
+def is_palindrome(x)
+    if x < 0
+        return false
+    end
+    
+    copy = x.to_s.reverse().to_i
+    return copy == x ? true : false
+end
