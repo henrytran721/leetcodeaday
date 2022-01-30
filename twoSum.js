@@ -45,3 +45,31 @@ var twoSum = function(nums, target) {
     // Time Complexity: O(n) only using 1 loop
     // Space Complexity: O(n) to store previously seen indexes
 };
+
+/***********
+ * Ruby 
+ * 
+ * 
+ */
+
+ def two_sum(nums, target)
+ nums.each_with_index do |num, index|
+     for i in index + 1..(nums.length() - 1)
+         if target == (num + nums[i])
+             return [index, i]
+         end
+     end
+ end 
+end
+
+/** O(n) solution */
+def two_sum(nums, target)
+    map = {}
+    
+    nums.each_with_index do |num, index|
+        if map.key?(num)
+            return [map[num], index]
+        end
+        map[target - num] = index;
+    end  
+end
