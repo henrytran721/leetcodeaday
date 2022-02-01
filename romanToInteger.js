@@ -18,4 +18,19 @@ var romanToInt = function(s) {
 
 // O(n) time to loop over string
 // O(1) space, hash map is defined subset
-
+// ruby
+def roman_to_int(s)
+    hash = {"I" => 1, "V" => 5, "X" => 10, "L" => 50, "C" => 100, "D" => 500, "M" => 1000}
+    
+    result = 0
+    s.chars.each_with_index do |el, i| 
+        if hash[s[i + 1]].to_i > hash[s[i]].to_i
+            result -= hash[s[i]].to_i
+        else
+            puts hash[el]
+            result += hash[s[i]].to_i
+        end
+    end
+    
+    return result
+end
