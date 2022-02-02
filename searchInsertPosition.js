@@ -47,3 +47,29 @@ var searchInsert = function(nums, target) {
 
 // Time: O (log n) using binary search
 // Space: O(1)
+
+// ruby
+def search_insert(nums, target)
+    left = 0
+    right = nums.length() - 1
+    
+    while(left < right)
+        mid = ((left + right) / 2).floor()
+        if target == nums[mid]
+            return mid
+        elsif target > nums[mid]
+            left = mid + 1
+        else
+            right = mid - 1
+        end
+    end
+    
+    result = 0
+    nums.each_with_index do |num, i| 
+        if target > num
+            result += 1
+        end
+    end
+    
+    return result
+end
