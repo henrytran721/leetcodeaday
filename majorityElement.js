@@ -29,3 +29,24 @@ var majorityElement = function(nums) {
 
 // Time: O(n log n)
 // Space: O(n)
+
+// def majority_element(nums)
+//     hash = {}
+    
+//     nums.each do |num|
+//         if hash[num] == nil
+//             hash[num] = 1
+//         else
+//             hash[num] += 1
+//         end
+//     end
+    
+//     max = nums[0]
+//     hash.each do |key, val|
+//         if val > hash[max]
+//             max = key
+//         end
+//     end
+    
+//     max
+// end
